@@ -8,3 +8,4 @@ try:
     print(f"OK — {len(profile.all_ids())} ids")
 except ValidationError as e:
     print(e)
+

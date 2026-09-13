@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(.venv/bin/python -c ' *)"
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(.venv/bin/python *)",
+      "Bash(git check-ignore *)",
+      "Bash(cp *)",
+      "Bash(typst compile *)",
+      "Bash(typst --version)",
+      "Bash(grep -v \"fira mono\\\\|font: \\(\\\\|│\\\\|┌\\\\|^$\")",
+      "Bash(echo \"[A] different CWD: exit=$?\")",
+      "Bash(echo \"[B] parent root: exit=$?\")",
+      "Bash(cp template.typ /tmp/t.bak)",
+      "Bash(sed -i '' 's/^#let use-icons = false.*/#let use-icons = true/' template.typ)",
+      "Bash(brew install *)",
+      "Bash(typst fonts *)"
     ]
   }
 }
