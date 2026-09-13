@@ -1,0 +1,462 @@
+{
+  "version": "1.0",
+  "meta": {
+    "name": "Mostafa Elkoussy",
+    "email": "zenmostafa20@gmail.com",
+    "phone": "+49 15566045986",
+    "location": "Deggendorf, Deutschland",
+    "github": "github.com/kyucy20",
+    "linkedin": null,
+    "portfolio": null
+  },
+  "summaries": [
+    {
+      "id": "sum_de_ai",
+      "lang": "DE",
+      "tags": ["ai", "ml", "rag", "python", "student"],
+      "text": "Student der Künstlichen Intelligenz (B.Sc.) an der Technischen Hochschule Deggendorf mit praktischer Erfahrung in der Softwareentwicklung bei Orange. Schwerpunkte: RAG- und LLM-Integration, Machine Learning mit Python und scikit-learn sowie Computer Vision auf Edge-Hardware."
+    },
+    {
+      "id": "sum_en_ai",
+      "lang": "EN",
+      "tags": ["ai", "ml", "rag", "python", "student"],
+      "text": "Artificial Intelligence student (B.Sc.) at Deggendorf Institute of Technology with hands-on software engineering experience at Orange. Focused on RAG and LLM integration, machine learning with Python and scikit-learn, and computer vision on edge hardware."
+    },
+    {
+      "id": "sum_de_fullstack",
+      "lang": "DE",
+      "tags": ["fullstack", "web", "react", "java", "backend"],
+      "text": "Full-Stack-orientierter KI-Student mit Erfahrung in React.js-Frontends und Java-Backends mit REST-Schnittstellen. Praktikum bei Orange in einem agilen Team mit Code-Reviews und Git-basiertem Branching, von der Anforderung bis zum Deployment."
+    },
+    {
+      "id": "sum_en_fullstack",
+      "lang": "EN",
+      "tags": ["fullstack", "web", "react", "java", "backend"],
+      "text": "Full-stack oriented AI student experienced in React.js front ends and Java back ends exposed over REST. Interned at Orange in an agile team with code reviews and Git-based branching, covering the full cycle from requirement to deployment."
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp_1",
+      "company": "Orange",
+      "role": {
+        "de": "Praktikant Softwareentwicklung",
+        "en": "Software Engineering Intern"
+      },
+      "location": "Ägypten",
+      "start": "2025-08",
+      "end": "2025-10",
+      "context": "Telco. Production apps, Python and Java, agile team. Non-printing.",
+      "bullets": [
+        {
+          "id": "exp_1_b1",
+          "tags": ["python", "java", "production", "backend"],
+          "has_metric": false,
+          "strength": 4,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Mitwirkung an der Entwicklung und Wartung produktiver Softwareanwendungen mit Python und Java."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Contributed to development and maintenance of production applications in Python and Java."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Unterstützung eines professionellen Entwicklungsteams bei der Stabilität produktiv genutzter Anwendungen, die täglich von Kundinnen und Kunden verwendet werden."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Helped a professional engineering team keep live customer-facing applications stable and maintainable in daily production use."
+            }
+          ]
+        },
+        {
+          "id": "exp_1_b2",
+          "tags": ["features", "testing", "debugging", "deployment", "sdlc"],
+          "has_metric": false,
+          "strength": 4,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Implementierung und Test neuer Funktionen sowie Fehlerbehebung über den gesamten Entwicklungszyklus – von der Anforderung bis zum Deployment."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Implemented and tested new features and fixed defects across the full development cycle, from requirement to deployment."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Eigenverantwortliche Begleitung von Features von der Anforderung bis zum Deployment und dadurch spürbare Entlastung des Teams im Tagesgeschäft."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Owned features end to end from requirement through deployment, freeing senior engineers for higher-priority work."
+            }
+          ]
+        },
+        {
+          "id": "exp_1_b3",
+          "tags": ["agile", "code-review", "git", "teamwork", "collaboration"],
+          "has_metric": false,
+          "strength": 3,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Arbeit in einem agilen Umfeld mit Code-Reviews und Git-basiertem Branching gemeinsam mit erfahrenen Entwicklerinnen und Entwicklern."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Worked in an agile environment with code reviews and Git-based branching alongside experienced developers."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Schnelle Integration in ein erfahrenes Team durch konsequente Nutzung von Code-Reviews und sauberer Branching-Strategie im agilen Ablauf."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Integrated quickly into an experienced team by consistently using code reviews and a clean branching strategy within the agile process."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "prj_chatbot",
+      "name": {
+        "de": "Frage-Antwort-Chatbot",
+        "en": "Question-Answering Chatbot"
+      },
+      "year": "2026",
+      "stack": ["React.js", "HTML/CSS", "Java", "REST"],
+      "context": "Full-stack chatbot answering user questions. React front end, Java REST backend.",
+      "bullets": [
+        {
+          "id": "prj_chatbot_b1",
+          "tags": ["react", "frontend", "java", "rest", "fullstack"],
+          "has_metric": false,
+          "strength": 4,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Als Full-Stack-Entwickler an einem Chatbot zur Beantwortung von Nutzerfragen mitgewirkt: responsives React.js-Frontend mit wiederverwendbaren Komponenten (HTML/CSS) sowie Java-Backend mit REST-Schnittstellen für den Client."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Worked as a full-stack developer on a chatbot answering user questions: responsive React.js front end with reusable components (HTML/CSS) and a Java backend exposing REST endpoints to the client."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Bereitstellung einer durchgängigen Chat-Oberfläche, über die Nutzerfragen ohne Umweg über Dokumentation direkt beantwortet werden können."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Delivered an end-to-end chat interface that answers user questions directly instead of sending them to search through documentation."
+            }
+          ]
+        },
+        {
+          "id": "prj_chatbot_b1",
+          "tags": ["state-management", "api-design", "error-handling", "architecture"],
+          "has_metric": false,
+          "strength": 3,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Konzeption des Request-Response-Ablaufs zwischen Frontend und Backend einschließlich State Management, Gesprächsverlauf und Fehlerbehandlung."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Designed the request-response flow between front end and backend, including state management, conversation history and error handling."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Durchgängiger Gesprächsverlauf und saubere Fehlerbehandlung sorgen dafür, dass Unterhaltungen auch bei Backend-Fehlern nicht abbrechen."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Persistent conversation history and graceful error handling keep sessions usable even when backend calls fail."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prj_rag",
+      "name": {
+        "de": "RAG-System über Hochschuldokumente",
+        "en": "RAG System over University Documents"
+      },
+      "year": "2026",
+      "stack": ["RAG", "Hugging Face", "Streamlit", "Python", "FAISS"],
+      "context": "Retrieval-augmented generation over university PDFs. Local Hugging Face LLM. Model name and test set size are placeholders in the source CV.",
+      "bullets": [
+        {
+          "id": "prj_rag_b1",
+          "tags": ["rag", "llm", "embeddings", "faiss", "huggingface", "python"],
+          "has_metric": false,
+          "strength": 5,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Entwicklung eines Retrieval-Augmented-Generation-Systems mit PDF-Dokumenten der Hochschule als Wissensbasis: Textextraktion, Chunking und Vektorähnlichkeitssuche mit all-MiniLM-L6-v2-Embeddings, indiziert mit FAISS, sowie einem lokal betriebenen Hugging-Face-LLM a locally hosted Mistral-7B-Instruct zur Antwortgenerierung."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Built a retrieval-augmented generation system over university PDF documents: text extraction, chunking and vector similarity search with all-MiniLM-L6-v2 embeddings indexed in FAISS, plus a locally hosted Hugging Face LLM a locally hosted Mistral-7B-Instruct for answer generation."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Studierende erhalten Antworten auf Fragen zu Hochschuldokumenten in Sekunden statt durch manuelles Durchsuchen umfangreicher PDF-Sammlungen."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Gives students answers about university documents in seconds instead of manually searching through large collections of PDFs."
+            }
+          ]
+        },
+        {
+          "id": "prj_rag_b2",
+          "tags": ["evaluation", "accuracy", "tuning", "baseline", "retrieval"],
+          "has_metric": true,
+          "strength": 5,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Optimierung von Chunk-Größe, Overlap und Retrieval-Parametern sowie Vergleich mit der Baseline ohne RAG auf einem Testset von [20] Fachfragen."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Tuned chunk size, overlap and retrieval parameters and benchmarked the system against a non-RAG baseline on a test set of [20] domain questions."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Erreichen einer Antwortgenauigkeit von 90 % auf einem Testset von [N] Fachfragen und damit deutliche Verbesserung gegenüber der Baseline ohne RAG."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Reached 90% answer accuracy on a test set of [N] domain questions, a clear improvement over the baseline without RAG."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prj_bottle_robot",
+      "name": {
+        "de": "Pfandflaschen-Roboter",
+        "en": "Deposit Bottle Robot"
+      },
+      "year": "2026",
+      "stack": ["Computer Vision", "Jetson Nano", "IoT", "AWS"],
+      "context": "Autonomous robot detecting deposit bottles with computer vision on NVIDIA Jetson Nano, streaming locations to AWS IoT.",
+      "bullets": [
+        {
+          "id": "prj_bottle_robot_b1",
+          "tags": ["computer-vision", "jetson-nano", "robotics", "edge"],
+          "has_metric": false,
+          "strength": 4,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Entwicklung eines autonomen Roboters auf Basis des NVIDIA Jetson Nano Developer Kits, der Pfandflaschen mittels Computer Vision erkennt."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Developed an autonomous robot based on the NVIDIA Jetson Nano Developer Kit that detects deposit bottles using computer vision."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Automatisierung des Auffindens von Pfandflaschen und damit Wegfall der manuellen Suche beim Einsammeln von Wertstoffen."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Automated the task of spotting deposit bottles, removing the manual search step from recyclable collection."
+            }
+          ]
+        },
+        {
+          "id": "prj_bottle_robot_b2",
+          "tags": ["iot", "aws", "real-time", "cloud", "telemetry"],
+          "has_metric": false,
+          "strength": 3,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Echtzeitübertragung der erkannten Flaschenstandorte an AWS IoT zur weiteren Verarbeitung in der Cloud."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Streamed detected bottle locations in real time to AWS IoT for further processing in the cloud."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Erkannte Standorte stehen unmittelbar in der Cloud zur Verfügung und ermöglichen die zentrale Auswertung mehrerer Roboter."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Made detections available in the cloud immediately, enabling central monitoring and analysis across multiple robots."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prj_student_success",
+      "name": {
+        "de": "Studienerfolg-Vorhersage",
+        "en": "Student Success Prediction"
+      },
+      "year": "2026",
+      "stack": ["Machine Learning", "Python", "scikit-learn", "pandas"],
+      "context": "Assistance system predicting whether students pass a course, based on a Kaggle dataset (study hours, sleep, attendance rate).",
+      "bullets": [
+        {
+          "id": "prj_student_success_b1",
+          "tags": ["machine-learning", "python", "scikit-learn", "prediction"],
+          "has_metric": false,
+          "strength": 4,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Entwicklung eines Assistenzsystems, das anhand eines Kaggle-Datensatzes (Lernstunden, Schlaf, Anwesenheitsquote) vorhersagt, ob Studierende einen Kurs bestehen."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Built an assistance system that predicts whether students pass a course, based on a Kaggle dataset covering study hours, sleep and attendance rate."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Frühzeitige Identifikation gefährdeter Studierender, sodass Unterstützung angeboten werden kann, bevor ein Kurs nicht bestanden wird."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Flags at-risk students early so support can be offered before they fail a course rather than afterwards."
+            }
+          ]
+        },
+        {
+          "id": "prj_student_success_b2",
+          "tags": ["regression", "classification", "feature-importance", "model-comparison"],
+          "has_metric": false,
+          "strength": 3,
+          "variants": [
+            {
+              "angle": "technical",
+              "Lang": "DE",
+              "text": "Umsetzung und Vergleich von Regressions- und Klassifikationsmodellen sowie Bewertung der Feature-Wichtigkeit zur Identifikation der stärksten Einflussfaktoren."
+            },
+            {
+              "angle": "technical",
+              "Lang": "EN",
+              "text": "Implemented and compared regression and classification models and evaluated feature importance to identify the strongest influencing factors."
+            },
+            {
+              "angle": "impact",
+              "Lang": "DE",
+              "text": "Die Analyse der Feature-Wichtigkeit macht transparent, welche Faktoren den Studienerfolg am stärksten beeinflussen, statt nur eine Vorhersage zu liefern."
+            },
+            {
+              "angle": "impact",
+              "Lang": "EN",
+              "text": "Feature importance analysis makes it transparent which factors drive student success, rather than only returning a prediction."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "skills": [
+    { "name": "Python", "category": "languages", "level": "primary", "aliases": ["py"], "years": null },
+    { "name": "JavaScript", "category": "languages", "level": "working", "aliases": ["js"], "years": null },
+    { "name": "Java", "category": "languages", "level": "working", "aliases": [], "years": null },
+    { "name": "SQL", "category": "languages", "level": "working", "aliases": [], "years": null },
+    { "name": "C++", "category": "languages", "level": "familiar", "aliases": ["cpp"], "years": null },
+
+    { "name": "React.js", "category": "web", "level": "working", "aliases": ["React", "ReactJS"], "years": null },
+    { "name": "HTML/CSS", "category": "web", "level": "working", "aliases": ["HTML", "CSS"], "years": null },
+    { "name": "REST-APIs", "category": "web", "level": "working", "aliases": ["REST", "REST API", "RESTful"], "years": null },
+
+    { "name": "RAG / LLM-Integration", "category": "ai_data", "level": "primary", "aliases": ["RAG", "LLM", "Retrieval-Augmented Generation"], "years": null },
+    { "name": "Hugging Face Transformers", "category": "ai_data", "level": "primary", "aliases": ["Hugging Face", "HuggingFace", "Transformers"], "years": null },
+    { "name": "Streamlit", "category": "ai_data", "level": "working", "aliases": [], "years": null },
+    { "name": "scikit-learn", "category": "ai_data", "level": "working", "aliases": ["sklearn"], "years": null },
+    { "name": "pandas", "category": "ai_data", "level": "working", "aliases": [], "years": null },
+    { "name": "Computer Vision", "category": "ai_data", "level": "working", "aliases": ["CV"], "years": null },
+    { "name": "FAISS", "category": "ai_data", "level": "working", "aliases": [], "years": null },
+
+    { "name": "Git/GitHub", "category": "tools", "level": "primary", "aliases": ["Git", "GitHub"], "years": null },
+    { "name": "Linux", "category": "tools", "level": "working", "aliases": [], "years": null },
+    { "name": "PostgreSQL", "category": "tools", "level": "working", "aliases": ["Postgres"], "years": null },
+    { "name": "AWS IoT", "category": "tools", "level": "familiar", "aliases": ["AWS", "IoT"], "years": null },
+    { "name": "VS Code", "category": "tools", "level": "working", "aliases": ["Visual Studio Code"], "years": null },
+    { "name": "PyCharm", "category": "tools", "level": "working", "aliases": [], "years": null },
+    { "name": "NVIDIA Jetson Nano", "category": "tools", "level": "familiar", "aliases": ["Jetson Nano", "Jetson"], "years": null }
+  ],
+  "education": [
+    {
+      "institution": "Technische Hochschule Deggendorf",
+      "credential": "B.Sc. Künstliche Intelligenz",
+      "location": "Deggendorf, Deutschland",
+      "start": "2024-09",
+      "end": "expected",
+      "detail": "Voraussichtlicher Abschluss 2027."
+    },
+    {
+      "institution": "Manarat El Mostaqbal",
+      "credential": "American Diploma",
+      "location": "Ägypten",
+      "start": "2021-06",
+      "end": "2021-06",
+      "detail": "Notendurchschnitt: 3,97 / 4,0. Im Lebenslauf ist nur das Jahr 2021 angegeben."
+    }
+  ],
+  "languages": [
+    { "name": "Deutsch", "level": "C1" },
+    { "name": "Englisch", "level": "C1" },
+    { "name": "Arabisch", "level": "native" }
+  ]
+}
