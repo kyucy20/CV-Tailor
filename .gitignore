@@ -1,0 +1,30 @@
+# Personal data
+CV.json
+answers.yaml
+*.db
+*.sqlite3
+
+# Generated output
+output/
+generated/
+*.pdf
+
+# Browser sessions — contains login cookies
+browser_profile/
+playwright/.auth/
+
+# Secrets
+.env
+.env.*
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
