@@ -1,7 +1,9 @@
 # Personal data
 CV.json
+job*.txt
 answers.yaml
 *.db
+*.db-journal
 *.sqlite3
 
 # Generated output
@@ -19,6 +21,7 @@ playwright/.auth/
 
 # Python
 .venv/
+.agents/
 venv/
 __pycache__/
 *.pyc
@@ -28,3 +31,10 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+preview_data.json
+out/
+test_broken.json
+.claude/
+preview_letter.json
+

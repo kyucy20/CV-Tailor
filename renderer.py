@@ -9,15 +9,21 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 
-from schema import ANGLES, LANGS, Experience, Profile, Project, localized
+from schema import ANGLES, LANGS, Experience, Profile, Project, Selection, localized
 
 HERE = Path(__file__).resolve().parent
 TEMPLATE = HERE / "template.typ"
+LETTER_TEMPLATE = HERE / "cover_letter.typ"
+
+# The one word of chrome on the subject line; the role title itself is copied
+# from the posting by the model.
+SUBJECT_WORD = {"EN": "Application", "DE": "Bewerbung"}
 
 BREW_HINT = (
     "typst is not installed. Install it with:\n\n    brew install typst\n\n"
@@ -130,14 +136,22 @@ def render(
     preview = HERE / "preview_data.json"
     preview.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
 
-    if not TEMPLATE.exists():
-        raise FileNotFoundError(f"template not found: {TEMPLATE}")
+    out = _compile(TEMPLATE, payload, out_path)
+    _warn_if_multipage(out)
+
+
+def _compile(template: Path, payload: dict, out_path: str) -> Path:
+    """Run one Typst compile of `template` over `payload`, returning the PDF
+    path. Shared by the CV and the cover letter so both get the same root,
+    font path and error reporting."""
+    if not template.exists():
+        raise FileNotFoundError(f"template not found: {template}")
     typst = _typst_binary()
 
     out = Path(out_path).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
 
-    # The data file must sit next to template.typ so the template's relative
+    # The data file must sit next to the template so the template's relative
     # json() call resolves, and so a template that imports siblings still works.
     fd, tmp = tempfile.mkstemp(prefix=".cvdata_", suffix=".json", dir=HERE)
     os.close(fd)
@@ -154,7 +168,7 @@ def render(
         fonts = HERE / "fonts"
         if fonts.is_dir():
             cmd += ["--font-path", str(fonts)]
-        cmd += [str(TEMPLATE), str(out)]
+        cmd += [str(template), str(out)]
         proc = subprocess.run(cmd, capture_output=True, text=True)
         if proc.returncode != 0:
             raise RuntimeError(
@@ -162,8 +176,57 @@ def render(
             )
     finally:
         data_file.unlink(missing_ok=True)
+    return out
 
-    _warn_if_multipage(out)
+
+def letter_header(sel: Selection) -> tuple[str | None, str | None]:
+    """The recipient and subject lines for a Selection, formatted as in the
+    reference letter: "SAP SE Walldorf, Germany" and "Application: SAP iXp
+    Intern (f/m/d)". Either comes back None when the model left it blank, and
+    the template then omits that line rather than printing a stray colon.
+    """
+    parts = [p for p in (sel.company.strip(), sel.job_location.strip()) if p]
+    recipient = " ".join(parts) or None
+
+    role = sel.role_title.strip()
+    subject = f"{SUBJECT_WORD[sel.lang]}: {role}" if role else None
+    return recipient, subject
+
+
+def render_cover_letter(
+    profile: Profile,
+    letter: str,
+    lang: str,
+    out_path: str,
+    recipient: str | None = None,
+    subject: str | None = None,
+) -> None:
+    """Render the model's cover letter to a PDF at out_path.
+
+    The letter is printed verbatim — split into paragraphs on blank lines and
+    nothing more. No salutation or sign-off is added here: whatever the model
+    wrote is the whole letter, exactly as it appears on stdout.
+
+    `recipient` ("SAP SE Walldorf, Germany") and `subject` ("Application:
+    ...") fill the two 11pt lines the reference letter carries under the name.
+    Both are omitted from the page when left as None.
+    """
+    if lang not in LANGS:
+        raise ValueError(f"lang must be one of {LANGS}, got {lang!r}")
+    paragraphs = [p.strip() for p in re.split(r"\n\s*\n", letter.strip()) if p.strip()]
+    if not paragraphs:
+        raise ValueError("cover letter is empty — nothing to render")
+
+    payload = {
+        "lang": lang,
+        "meta": profile.meta.text(lang),
+        "body": paragraphs,
+        "recipient": recipient,
+        "subject": subject,
+    }
+    preview = HERE / "preview_letter.json"
+    preview.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+    _compile(LETTER_TEMPLATE, payload, out_path)
 
 
 def _warn_if_multipage(pdf: Path) -> None:

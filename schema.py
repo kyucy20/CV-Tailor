@@ -1,4 +1,11 @@
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    ValidationInfo,
+    field_validator,
+    model_validator,
+)
 from typing import Literal,Optional
 import re
 DATE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
@@ -6,6 +13,13 @@ DATE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
 SKILL_CATEGORIES = ("languages", "web", "ai_data", "tools")
 LANGS = ("DE", "EN")
 ANGLES = ("technical", "impact")
+
+MAX_BULLETS = 8
+
+# The projects section must never look thin: a selection has to draw on at
+# least this many distinct projects. Enforced in Selection, so a short answer
+# comes back through the same retry loop that catches invented ids.
+MIN_PROJECTS = 3
 
 # Localised fields are dicts keyed by lowercase language code, matching the
 # existing Experience.role / Project.name convention.
@@ -185,6 +199,65 @@ class Summary(BaseModel):
     text: str = Field(min_length=40)
 
 
+class Selection(BaseModel):
+    """What the model is allowed to return: ids, two enums, and one prose field.
+
+    Every id is checked against the profile's real ids, supplied through
+    pydantic's validation context:
+
+        Selection.model_validate(data, context={
+            "valid_ids": profile.selectable_ids(),
+            "project_of": profile.project_of_bullet(),
+        })
+
+    Each context key unlocks one check: "valid_ids" the id check, "project_of"
+    the MIN_PROJECTS check. If no context is given the id check is skipped — the ids are then still
+    caught downstream by find_summary / find_bullet, but pass the context so
+    the failure names every bad id at once and can be fed back to the model.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    summary_id: str
+    bullet_ids: list[str] = Field(max_length=MAX_BULLETS)
+    lang: Literal["DE", "EN"]
+    angle: Literal["technical", "impact"]
+    cover_letter: str
+    unmatched_requirements: list[str]
+    company: str
+    job_location: str
+    role_title: str
+
+    @model_validator(mode="after")
+    def ids_exist(self, info: ValidationInfo):
+        dupes = sorted({b for b in self.bullet_ids if self.bullet_ids.count(b) > 1})
+        if dupes:
+            raise ValueError(f"bullet_ids contains duplicates: {dupes}")
+
+        context = info.context or {}
+
+        valid = context.get("valid_ids")
+        if valid is not None:
+            unknown = [i for i in [self.summary_id, *self.bullet_ids] if i not in valid]
+            if unknown:
+                raise ValueError(
+                    f"unknown ids: {unknown}. Every id must come verbatim from the "
+                    f"bullet bank or the summary list; ids may not be invented."
+                )
+
+        project_of = context.get("project_of")
+        if project_of is not None:
+            covered = sorted({project_of[b] for b in self.bullet_ids if b in project_of})
+            if len(covered) < MIN_PROJECTS:
+                raise ValueError(
+                    f"the projects section must show at least {MIN_PROJECTS} different "
+                    f"projects; this selection covers {len(covered)} "
+                    f"({', '.join(covered) if covered else 'none'}). Add at least one "
+                    f"bullet from {MIN_PROJECTS - len(covered)} more project(s)."
+                )
+        return self
+
+
 class Profile(BaseModel):
     version: str = "1.0"
     meta: Meta
@@ -226,9 +299,24 @@ class Profile(BaseModel):
         """Return the Bullet with this id, or raise KeyError naming the id."""
         return self._locate(bullet_id)[0]
 
+    def project_of_bullet(self) -> dict[str, str]:
+        """Map each project bullet id to its project id. Experience bullets are
+        absent by design — only the projects section carries the minimum."""
+        return {b.id: p.id for p in self.projects for b in p.bullets}
+
     def parent_of(self, bullet_id: str) -> Experience | Project:
         """Return the Experience or Project the bullet belongs to."""
         return self._locate(bullet_id)[1]
+
+    def summary_ids(self) -> set[str]:
+        return {s.id for s in self.summaries}
+
+    def selectable_ids(self) -> set[str]:
+        """The ids a Selection may legitimately contain: bullets and summaries.
+        Deliberately excludes Experience/Project container ids — those are
+        never selectable, so naming one is an error rather than a near-miss.
+        """
+        return self.bullet_ids() | self.summary_ids()
 
     def find_summary(self, summary_id: str) -> Summary:
         for s in self.summaries:
